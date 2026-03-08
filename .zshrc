@@ -44,18 +44,12 @@ fi
 # Aliases & convenience tools
 # ------------------------
 alias ls="eza --icons=always"
-alias ll="ls -lah"
+alias ll="eza --icons=always -lah"
 alias make="gmake"
-alias cd="z"  # zoxide shortcut
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 # fzf key bindings (if installed)
 [[ -x "$(command -v fzf)" ]] && source <(fzf --zsh)
-
-# ------------------------
-# Zoxide initialization
-# ------------------------
-eval "$(zoxide init zsh)"
 
 # ------------------------
 # Colors
@@ -66,8 +60,8 @@ autoload -U colors && colors
 # History configuration
 # ------------------------
 HISTFILE=$HOME/.zhistory
-SAVEHIST=1000
-HISTSIZE=999
+SAVEHIST=10000
+HISTSIZE=10000
 setopt share_history
 setopt hist_expire_dups_first
 setopt hist_ignore_dups
@@ -86,3 +80,11 @@ bindkey '^[[B' history-search-forward
 # ========================
 # End of .zshrc
 # ========================
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+
+# ------------------------
+# Zoxide initialization
+# ------------------------
+eval "$(zoxide init zsh --cmd cd)" || true
